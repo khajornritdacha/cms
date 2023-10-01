@@ -9,18 +9,17 @@ services:
       # It would be nice here to support OSes that don't have /tmp
       # See: https://github.com/docker/compose/issues/3344
       - "/tmp/var_lib_postgresql_data:/var/lib/postgresql/data"
-  cms_dev:
-    container_name: cms_dev
+  cms_prod:
+    container_name: cms
     build: 
       context: .
-      dockerfile: Dockerfile.dev
     ports:
       - 8888:8888
       - 8889:8889
     depends_on:
       - "db"
     environment:
-      CMS_CONFIG: /usr/local/etc/cms-dev.conf
+      CMS_CONFIG: /usr/local/etc/cms.conf
     volumes:
       - "./codecov:/home/cmsuser/cms/codecov"
     privileged: true

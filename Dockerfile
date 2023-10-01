@@ -35,22 +35,19 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # Set cmsuser as default user
 USER cmsuser
 
-RUN mkdir /home/cmsuser/cms
-COPY --chown=cmsuser:cmsuser requirements.txt dev-requirements.txt /home/cmsuser/cms/
+COPY --chown=cmsuser:cmsuser . /home/cmsuser/cms
 
 WORKDIR /home/cmsuser/cms
+EXPOSE 8888-8889
 
 RUN sudo pip3 install -r requirements.txt
 RUN sudo pip3 install -r dev-requirements.txt
-
-COPY --chown=cmsuser:cmsuser . /home/cmsuser/cms
-
 RUN sudo python3 setup.py install
 
 RUN sudo python3 prerequisites.py --yes --cmsuser=cmsuser install
 
-RUN sudo sed 's|/cmsuser:your_password_here@localhost:5432/cmsdb"|/postgres@cms_test_db:5432/cmsdbfortesting"|' ./config/cms.conf.sample \
-    | sudo tee /usr/local/etc/cms-testdb.conf
+RUN sudo sed 's/cmsuser:your_password_here@localhost/postgres@db/' ./config/cms.conf.sample \
+    | sudo tee /usr/local/etc/cms.conf
 
 ENV LANG C.UTF-8
 
