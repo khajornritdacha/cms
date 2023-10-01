@@ -19,31 +19,16 @@
 
     "core_services":
     {
-        "LogService":        [["localhost", 29000]],
-        "ResourceService":   [["localhost", 28000]],
-        "ScoringService":    [["localhost", 28500]],
-        "Checker":           [["localhost", 22000]],
-        "EvaluationService": [["localhost", 25000]],
-        "Worker":            [["localhost", 26000],
-                              ["localhost", 26001],
-                              ["localhost", 26002],
-                              ["localhost", 26003],
-                              ["localhost", 26004],
-                              ["localhost", 26005],
-                              ["localhost", 26006],
-                              ["localhost", 26007],
-                              ["localhost", 26008],
-                              ["localhost", 26009],
-                              ["localhost", 26010],
-                              ["localhost", 26011],
-                              ["localhost", 26012],
-                              ["localhost", 26013],
-                              ["localhost", 26014],
+        "LogService":        [["10.148.0.3", 29000]],
+        "ResourceService":   [["10.148.0.3", 28000]],
+        "ScoringService":    [["10.148.0.3", 28500]],
+        "Checker":           [["10.148.0.3", 22000]],
+        "EvaluationService": [["10.148.0.3", 25000]],
+        "Worker":            [["10.148.0.5", 26000],
                               ["localhost", 26015]],
-        "ContestWebServer":  [["localhost", 21000]],
-        "AdminWebServer":    [["localhost", 21100]],
+        "ContestWebServer":  [["10.148.0.3", 21000]],
+        "AdminWebServer":    [["10.148.0.3", 21100]],
         "ProxyService":      [["localhost", 28600]],
-        "PrintingService":   [["localhost", 25123]]
         },
 
     "other_services":
@@ -56,7 +41,7 @@
     "_section": "Database",
 
     "_help": "Connection string for the database.",
-    "database": "postgresql+psycopg2://cmsuser:your_password_here@localhost:5432/cmsdb",
+    "database": "postgresql+psycopg2://10.148.0.3:5432/cmsdb",
 
     "_help": "Whether SQLAlchemy prints DB queries on stdout.",
     "database_debug": false,
