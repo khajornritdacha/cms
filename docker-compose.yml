@@ -9,7 +9,7 @@ services:
       # It would be nice here to support OSes that don't have /tmp
       # See: https://github.com/docker/compose/issues/3344
       - "/tmp/var_lib_postgresql_data:/var/lib/postgresql/data"
-  cms_prod:
+  cms:
     container_name: cms
     build: 
       context: .
